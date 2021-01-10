@@ -11,7 +11,6 @@ import Vue from 'vue'
 //导入uri
 import uri from "@/config/uri"
 
-Vue.use(uri)
 export default {
     data() {
         return {
@@ -21,8 +20,7 @@ export default {
     },
     methods: {
         getData() {
-            // axios.get(uri.getRank + "?showDetail=1")
-            axios.get('/api/top/category?showDetail=1')
+            this.$http.get(uri.getRank + "?showDetail=1")
             .then(ret => {
                 console.log(ret)
             }).catch(err => console.log(err))
