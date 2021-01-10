@@ -16,7 +16,7 @@ const routes = [
 
   {
     path: '/',
-    redirect: '/index/rank'
+    redirect: '/index/recommend'
   },
   ...routerss,
   // {

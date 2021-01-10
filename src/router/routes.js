@@ -8,6 +8,7 @@ import Recommend from '@/views/Home/Recommend'
 
 
 
+
 export default [
 
 
@@ -29,6 +30,7 @@ export default [
         children: [
             { path: "rank", component: Rank },
             { path: "recommend", component: Recommend },
+            {path: 'search', component: Search },
         ],
     },
     //4.列表
@@ -37,8 +39,5 @@ export default [
         component: PlayList
     },
     //5.搜索
-    {
-        path: '/search',
-        component: Search
-    },
+
 ]
