@@ -1,5 +1,6 @@
 <template>
     <div>
+<<<<<<< HEAD
         <van-form @submit="onSubmit">
           <div class="logo">
             <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2805201756,4208148266&fm=26&gp=0.jpg" alt="">
@@ -25,6 +26,35 @@
     <van-button round block type="info" native-type="submit">注册</van-button>
   </div>
 </van-form>
+=======
+        <div class="logo">
+            <img src="https://2url.cc/1OwrB" />
+        </div>
+        <div>
+            <van-form @submit="onSubmit">
+                <van-field
+                    v-model="mobile"
+                    name="mobile"
+                    label="手机号"
+                    placeholder="手机号"
+                    :rules="[{ pattern, message: '请填写正确的手机号' }]"
+                />
+                <van-field
+                    v-model="password"
+                    type="password"
+                    name="password"
+                    label="密码"
+                    placeholder="密码"
+                    :rules="[{ required: true, message: '请填写密码' }]"
+                />
+                <div style="margin: 16px;">
+                    <van-button square block type="info" native-type="submit"
+                        >提交</van-button
+                    >
+                </div>
+            </van-form>
+        </div>
+>>>>>>> ef724fd65abc10d41d7319bdf3ad48d92379ab37
     </div>
 </template>
 
