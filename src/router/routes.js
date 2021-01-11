@@ -6,6 +6,7 @@ import Search from '@/views/Search/Index'
 import Home from '@/views/Home/Index'
 import Rank from '@/views/Home/Rank'
 import Recommend from '@/views/Home/Recommend'
+import PlaySong  from '@/views/Play/Index'
 
 
 
@@ -40,10 +41,22 @@ export default [
         component: PlayList
     },
     //5.搜索
+<<<<<<< HEAD
     //6.排行榜歌单详情
     {
         path: '/list2/:topId',
         component: PlayList2
+=======
+    {
+        path: '/search',
+        component: Search
+    },
+    // 播放页
+    {
+        path: '/palysong/:id',
+        component: PlaySong
+
+>>>>>>> 6e8d25e87a2b5f95759a8f22cc3e1c9ebb13b24d
     }
 
 ]
