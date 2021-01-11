@@ -59,13 +59,13 @@ export default {
             //拿到歌单数据
             this.$http.get(uri.getRank + "?showDetail=1")
             .then(ret => { 
-                console.log(ret)
+                //console.log(ret)
                 ret = ret.data
-                console.log(ret)
+                //console.log(ret)
                 ret.map(item => {
                     //数据填充到list
                     this.list.push(...item.list)
-                    console.log(this.list)
+                    //console.log(this.list)
                 })
             }).catch(err => console.log(err))
             // 数据加载完成，去除加载组件的显示
@@ -102,6 +102,10 @@ img {
     position: absolute;
     right: 15px;
     overflow: hidden;
+}
+.thumb img {
+    display: block;
+    transform:scale(1.5);
 }
 // 榜名样式设置
 .title {

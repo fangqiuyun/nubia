@@ -53,10 +53,10 @@ export default {
     },
     methods: {
         getDetail() {
-            console.log(this.$route)
+           // console.log(this.$route)
             this.$http.get(uri.getRankInfo + "?id="  + this.$route.params.topId)
             .then(ret => {
-                console.log(ret)
+               // console.log(ret)
             this.title = ret.data.info.title
             this.titleDetail = ret.data.info.titleDetail
             this.picUrl = ret.data.info.picUrl
