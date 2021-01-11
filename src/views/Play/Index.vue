@@ -181,7 +181,7 @@ export default {
                 { name: '会不会' },
             ],
             playUrl: '',
-            info: {}
+            info: {name: '',singer: [{name:''}],album:{mid: ''}}
             
         };
     },
