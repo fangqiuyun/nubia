@@ -22,11 +22,14 @@
             </div>
         </div>
 
-        <!-- <div class="play">
-            <audio src="" controls="controls">
-                Your browser does not support the audio element.
-            </audio>
-        </div> -->
+        <div class="play">
+            <div>
+                <span class="iconfont">&#xe604;</span>
+            </div>
+            <div>
+                <span class="iconfont">&#xe51a;</span>
+            </div>
+        </div>
 
         <!-- 下载 -->
         <div class="download">
@@ -149,9 +152,15 @@ export default {
         list() {
             this.show = true
         },
+        // 播放收藏
+        play() {
+            
+        }
     },
-    created: {
-        // this.$http.get(uri.)
+    created() {
+        this.$http.get(uri.getPlaySong + '?id=0039MnYb0qxYhV').then((ret) => {
+            console.log(ret.data)
+        })
     }
 }
 </script>

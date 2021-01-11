@@ -9,6 +9,7 @@ import PlaySong  from '@/views/Play/Index'
 
 
 
+
 export default [
 
 
@@ -30,6 +31,7 @@ export default [
         children: [
             { path: "rank", component: Rank },
             { path: "recommend", component: Recommend },
+            {path: 'search', component: Search },
         ],
     },
     //4.列表
@@ -44,8 +46,9 @@ export default [
     },
     // 播放页
     {
-        path: '/palysong',
+        path: '/palysong/:id',
         component: PlaySong
 
     }
+
 ]
