@@ -181,7 +181,7 @@ export default {
                 { name: '会不会' },
             ],
             playUrl: '',
-            info: {}
+            info: {name: '',singer: [{name:''}],album:{mid: ''}}
             
         };
     },
@@ -213,7 +213,7 @@ export default {
             console.log(ret)
             this.playUrl =  ret.data[this.$route.params.id]
         })
-        this.$http.get(uri.getSong + '?songmid=0039MnYb0qxYhV').then((ret) => {
+        this.$http.get(uri.getSong + '?songmid=' + this.$route.params.id).then((ret) => {
             this.info = ret.data.track_info
             console.log(this.info)
             console.log(ret)

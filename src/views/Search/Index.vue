@@ -144,7 +144,6 @@ this.list=ret.data
   padding: 0;
 }
 .beijing{
-  height: 768px;
   box-sizing: border-box;
   background-color:white ;
  
@@ -179,11 +178,15 @@ input{
   margin-top: 16px;
 }
 .jieguo h3{
-  
+  font-weight: 800;
+  text-align: left;
   font-size: 16px;
   overflow: hidden;
   width: 100%;
  
 
+}
+.jieguo p{
+  font-size: 14px;
 }
 </style>
