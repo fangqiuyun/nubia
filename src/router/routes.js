@@ -5,6 +5,7 @@ import Search from '@/views/Search/Index'
 import Home from '@/views/Home/Index'
 import Rank from '@/views/Home/Rank'
 import Recommend from '@/views/Home/Recommend'
+import PlaySong  from '@/views/Play/Index'
 
 
 
@@ -41,4 +42,10 @@ export default [
         path: '/search',
         component: Search
     },
+    // 播放页
+    {
+        path: '/palysong',
+        component: PlaySong
+
+    }
 ]
