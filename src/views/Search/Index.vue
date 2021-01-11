@@ -144,7 +144,6 @@ this.list=ret.data
   padding: 0;
 }
 .beijing{
-  height: 768px;
   box-sizing: border-box;
   background-color:white ;
  

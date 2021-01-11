@@ -22,6 +22,7 @@ export default {
     flex-direction:column;
     align-items:center;
     margin-top: 70px;
+    margin-bottom: 70px;
 }
 .footer p{
     margin: 0;
