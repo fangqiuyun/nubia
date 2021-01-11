@@ -33,17 +33,15 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Vue from 'vue'
-
+import axios from 'axios'
 //导入vant组件
 import { Card, Loading } from 'vant';
 Vue.use(Card);
 Vue.use(Loading)
 
-//导入uri
-//import uri from "@/config/uri"
-//Vue.use(uri)
+// 导入uri
+import uri from "@/config/uri"
 
 export default {
     data() {
@@ -53,17 +51,17 @@ export default {
             //item.song    item.title 歌名,  item.singerName 歌手   :key=“item.italbumMid”
             list: [],
             // 控制加载组件是否显示
-            isLoading: true,
-            
+            isLoading: true,    
         }
     },
     methods: {
         getData() {
             //拿到歌单数据
-            // axios.get(uri.getRank + "?showDetail=1")
-            axios.get('/api/top/category?showDetail=1')
+            this.$http.get(uri.getRank + "?showDetail=1")
             .then(ret => { 
-                ret = ret.data.data
+                console.log(ret)
+                ret = ret.data
+                console.log(ret)
                 ret.map(item => {
                     //数据填充到list
                     this.list.push(...item.list)
@@ -75,35 +73,19 @@ export default {
         },
          // 编程导航，去详情页面
         goDetail(topId) {
-            this.$router.push("/list2/" + topId);
+            this.$router.push("/list2/" + topId)
         },
     },
-    // filters: {
-    //     // 处理歌手的信息
-        
-    //     parseTitle(title) {
-    //             var str = "";
-    //             title = title.split(",")
-    //             title.forEach((el) => { 
-    //                 str += el + " ";
-    //             });
-    //             if(str.length < 16){ 
-    //                 return str 
-    //             }else{
-    //                 return str.substr(0, 16) + " ";                   
-    //             }
-                
-    //     },
-    // },
     created() {
         this.getData()
     },
+    
 }
 </script>
 
 <style lang="scss" scoped>
-// scoped表示样式只在当前组件内生效，不影响子组件
-// 控制加载组件是否显示
+//  scoped表示样式只在当前组件内生效，不影响子组件
+//  控制加载组件是否显示
 .loading {
     text-align: center;
     padding-top: 5px;
