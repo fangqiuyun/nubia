@@ -312,9 +312,7 @@ export default {
         width: 100%;
         height: 100%;
     }
-    .singer {
-        // margin-right: 35%;
-    }
+
     .singer h4 {
         font-size: 16px;
         font-weight: 400;
