@@ -179,11 +179,15 @@ input{
   margin-top: 16px;
 }
 .jieguo h3{
-  
+  font-weight: 800;
+  text-align: left;
   font-size: 16px;
   overflow: hidden;
   width: 100%;
  
 
+}
+.jieguo p{
+  font-size: 14px;
 }
 </style>
