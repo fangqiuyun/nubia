@@ -5,11 +5,13 @@
         <van-loading size="24px" type="spinner">加载中...</van-loading>
     </div>
         <header>
-            <img :src="picUrl" alt="" class="pic" width="209"> 
+            <div class="fangda">
+                <img :src="picUrl" alt="" class="pic" width="209"> 
+            </div>
             <h3>{{ title }}</h3>
             <h4>{{ titleDetail }}</h4>
             <p>更新时间: {{ update }}</p>
-            <a href="javascript:;" class="player_btn">
+            <a href="javascript:;" class="player_btn" @click="getMid">
                 <img src="../../images/bofang.png" alt="" width="22px">
             </a>
         </header>
@@ -68,7 +70,7 @@ export default {
         //点击歌曲传mid 导航去播放页
         getMid(id) {
             //console.log(id)
-            this.$router.push("/palysong/" + id)
+            this.$router.push("/playsong/" + id)
         },
     },
     created() {
@@ -88,7 +90,7 @@ p{
     padding-top: 5px;
 }
 .toplist {
-    width: 400px;
+    width: 370px;
     padding: 11px 17px;
     font-size: 13px;
     color: #808080;
@@ -113,21 +115,29 @@ p{
 }
 .toplist>ul>li>img {
     padding: 5px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 header {
     text-align: center;
     margin: 13px 0;
 }
-header .pic {
+header .fangda {
+    display: inline-block;
+    width: 209px;
+    height: 209px;
     border-radius: 1.3rem;
+    overflow: hidden;
+}
+header .fangda .pic {
+    display: block;
+    transform:scale(2)
 }
 header a {
     margin-top: 5px;
     text-decoration: none;
     display: inline-block;
     background-color: blue;
-    width: 11.9rem;
+    width: 12.9rem;
     height: 2.9rem;
     border-radius: 1.3rem;
     box-shadow: 0 6px 32px rgba(24,213,156,.5);
