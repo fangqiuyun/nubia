@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3670508",
+      "name": "收 藏 copy",
+      "font_class": "shoucangcopy",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
+      "icon_id": "4122302",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "6363680",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e68c",
+      "unicode_decimal": 59020
+    },
+    {
+      "icon_id": "6981288",
+      "name": "收 藏",
+      "font_class": "shoucang",
+      "unicode": "e51a",
+      "unicode_decimal": 58650
+    },
+    {
+      "icon_id": "11165754",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}

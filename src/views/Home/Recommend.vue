@@ -80,7 +80,7 @@
       },
       getInfo(id){
         this.$router.push("/list/" + id);
-        console.log(id)
+        // console.log(id)
 
       },
 
@@ -93,7 +93,7 @@
     created() {
       this.$http.get(uri.getRecommend + '?pageSize=7').then((ret => {
         this.list = ret.data.list
-        console.log(this.list)
+        // console.log(this.list)
       })),
       this.$http.get(uri.getRecommend + '?pageSize=7&id=3056').then((ret => {
         this.list1 = ret.data.list
