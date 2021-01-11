@@ -37,6 +37,12 @@ export default {
     getRank: prefix + "/top/category",
     getRankInfo: prefix + "/top",
 
+    // 大家都在听
+    getAll: prefix + "/song/playlist",
+
+    // 猜你喜欢
+    getLike: prefix + "/song/similar"
+    
 
 
 

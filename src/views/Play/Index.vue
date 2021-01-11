@@ -64,75 +64,43 @@
         <!-- 猜你喜欢 -->
         <div>
 
-            <div>
                 <p class="sub">猜你喜欢</p>
-                <div class="like">
-                    <div class="pic">
-                        <img src="" alt="">
-                    </div>
-                    <div class="singer">
-                        <h4>执迷不悟</h4>
-                        <p>黄四海</p>
-                    </div>
-                    <div class="gt">
-                        ＞
+
+                <div  v-for="(item, index) in list3" :key="index" class="list3">
+                    <div class="like">
+                        <div class="pic">
+                            <img :src="`https://y.gtimg.cn/music/photo_new/T002R300x300M000${item.album.mid}.jpg`" alt="">
+                        </div>
+                        
+                        <div class="sing">
+                            <div class="singer">
+                            <h4>{{item.name}}</h4>
+                            <p>{{item.singer[0].name}}</p>
+                            </div>
+
+                            <div class="gt">
+                                ＞
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
         </div>
 
         <!-- 大家在听 -->
         <div>
             <p class="sub">大家都在听</p>
-            <div class="everyone">
-                <div>
+            <div class="everyone" >
+                <div v-for="(item, index) in list1" :key="index" > 
                     <div class="kind_img">
-                        <img src="" alt="">
+                        <img :src="item.imgurl" alt="" >
                     </div>
-                    <p class="kind_title">热门流行 | 今天</p>
-                    <p class="kind">快手听风影</p>
+                    <p class="kind_title">{{item.dissname | parsePlay}}</p>
+                    <p class="kind">{{item.creator}}</p>
                 </div>
 
-                <div>
-                    <div class="kind_img">
-                        <img src="" alt="">
-                    </div>
-                    <p class="kind_title">热门流行 | 今天</p>
-                    <p class="kind">快手听风影</p>
-                </div>
-
-                <div>
-                    <div class="kind_img">
-                        <img src="" alt="">
-                    </div>
-                    <p class="kind_title">热门流行 | 今天</p>
-                    <p class="kind">快手听风影</p>
-                </div>
             </div>
         </div>
 
-
-        <!-- 歌手与专辑 -->
-        <div>
-
-            <div>
-                <p class="sub">歌手与专辑</p>
-                <div class="like">
-                    <div class="pic">
-                        <img src="" alt="">
-                    </div>
-                    <div class="singer">
-                        <h4>执迷不悟</h4>
-                        <p>黄四海</p>
-                    </div>
-                    <div class="gt">
-                        ＞
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
         <!-- list动态面板 -->
         <van-action-sheet
@@ -181,7 +149,9 @@ export default {
                 { name: '会不会' },
             ],
             playUrl: '',
-            info: {name: '',singer: [{name:''}],album:{mid: ''}}
+            info: {name: '',singer: [{name:''}],album:{mid: ''}},
+            list1:[ ],
+            list3: [ ],
             
         };
     },
@@ -205,20 +175,49 @@ export default {
         shoucang() {
             this.flag1 = !this.flag1
             
-        }
+        },
+        getAllLike(){
+            this.$http.get(uri.getAll + '?id=' + this.info.id).then((ret) => {
+            // console.log(ret)
+            this.list1 = ret.data
+            
+        })
+        },
+        getLike(){
+            this.$http.get(uri.getLike + '?id=' + this.info.id).then((ret) => {
+                this.list3 = ret.data
+        })
+        },
+        
+        
     },
     created() {
         this.$http.get(uri.getPlaySong + '?id=' + this.$route.params.id).then((ret) => {
             
-            console.log(ret)
+            // console.log(ret)
             this.playUrl =  ret.data[this.$route.params.id]
         })
         this.$http.get(uri.getSong + '?songmid=' + this.$route.params.id).then((ret) => {
             this.info = ret.data.track_info
-            console.log(this.info)
-            console.log(ret)
+            this.getAllLike()
+            this.getLike()
+            // console.log(this.info)
+            // console.log(ret)
         })
+    },
+    filters: {
+        parsePlay (name) {
+            let str = ""
+            if (name.length > 8) {
+                str = name
+                return str.substr(0,7) + '...'
+            }else {
+                str = name
+                return str
+            }
         }
+    }
+        
 }
 </script>
 
@@ -297,7 +296,7 @@ export default {
     .like {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
         width: 100%;
         padding: 0 20px;
     }
@@ -305,10 +304,16 @@ export default {
         width: 65px;
         height: 65px;
         background-color: rebeccapurple;
-        border-radius: 5%;
+        border-radius: 7px;
+        margin-right: 10px;
+        overflow: hidden;
+    }
+    .pic > img {
+        width: 100%;
+        height: 100%;
     }
     .singer {
-        margin-right: 35%;
+        // margin-right: 35%;
     }
     .singer h4 {
         font-size: 16px;
@@ -356,7 +361,12 @@ export default {
         height: 107px;
         background-color: rebeccapurple;
         border-radius: 6%;
+        overflow: hidden;
     }
+    .kind_img > img {
+        width: 100%;
+        height: 100%;
+    } 
     .kind_title {
         margin: 0;
         padding: 0;
@@ -414,5 +424,13 @@ export default {
         font-size: 20px;
         font-weight: 400;
         color: #000000;
+    }
+    .list3 {
+        margin-bottom: 10px;
+    }
+    .sing {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
     }
 </style>
