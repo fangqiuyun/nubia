@@ -46,7 +46,7 @@ export default [
     },
     // 播放页
     {
-        path: '/palysong/:id',
+        path: '/playsong/:id',
         component: PlaySong
 
     }

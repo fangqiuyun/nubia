@@ -328,4 +328,10 @@ export default {
         text-align: center;
         background-color: #22D59C;
     }
+    // 播放 收藏
+    .play {
+        width: 100%;
+        height: 80px;
+        padding: 0 20%;
+    }
 </style>
