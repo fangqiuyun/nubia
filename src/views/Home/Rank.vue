@@ -73,6 +73,7 @@ export default {
         },
          // 编程导航，去详情页面
         goDetail(topId) {
+            //console.log(topId)
             this.$router.push("/list2/" + topId)
         },
     },

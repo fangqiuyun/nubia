@@ -1,5 +1,9 @@
 <template>
     <div>
+        <!-- v-show控制组件是否显示 -->
+    <div class="loading" v-show="isLoading">
+        <van-loading size="24px" type="spinner">加载中...</van-loading>
+    </div>
         <header>
             <img :src="picUrl" alt="" class="pic" width="209"> 
             <h3>{{ title }}</h3>
@@ -12,7 +16,7 @@
         <div class="toplist">
             <p>排行榜 共{{ total }}首</p>
             <ul>
-                <li v-for="(item, index) in list" :key="item.id">
+                <li v-for="(item, index) in list" :key="item.id" @click="getMid(item.mid)">
                     <p>{{ index + 1 }}</p>
                     <div class="xinxi">
                         <p>{{ item.name }}</p>
@@ -26,7 +30,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import uri from '@/config/uri'
+//导入vant组件
+import { Loading } from 'vant';
+Vue.use(Loading)
 export default {
     data() {
         return {
@@ -36,13 +44,15 @@ export default {
             picUrl: "",
             update: "",
             total: "",
-            list: []
+            list: [],
+             // 控制加载组件是否显示
+            isLoading: true,   
         }
     },
     methods: {
         getDetail() {
-            //console.log(this.$route)
-            this.$http.get(uri.getRankInfo + "?id"  + this.$route.params.topId)
+            console.log(this.$route)
+            this.$http.get(uri.getRankInfo + "?id="  + this.$route.params.topId)
             .then(ret => {
                 console.log(ret)
             this.title = ret.data.info.title
@@ -52,6 +62,13 @@ export default {
             this.total = ret.data.total
             this.list = ret.data.list
             }).catch(err => console.log(err))
+            // 数据加载完成，去除加载组件的显示
+            this.isLoading = false;
+        },
+        //点击歌曲传mid 导航去播放页
+        getMid(id) {
+            //console.log(id)
+            this.$router.push("/palysong/" + id)
         },
     },
     created() {
@@ -64,6 +81,11 @@ export default {
 <style lang="scss" scoped>
 p{
     margin: 0;
+}
+//  控制加载组件是否显示
+.loading {
+    text-align: center;
+    padding-top: 5px;
 }
 .toplist {
     width: 400px;

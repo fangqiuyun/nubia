@@ -41,12 +41,11 @@ export default [
         component: PlayList
     },
     //5.搜索
-<<<<<<< HEAD
     //6.排行榜歌单详情
     {
         path: '/list2/:topId',
         component: PlayList2
-=======
+    },
     {
         path: '/search',
         component: Search
@@ -56,7 +55,6 @@ export default [
         path: '/palysong/:id',
         component: PlaySong
 
->>>>>>> 6e8d25e87a2b5f95759a8f22cc3e1c9ebb13b24d
     }
 
 ]
