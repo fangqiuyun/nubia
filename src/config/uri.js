@@ -25,11 +25,11 @@ export default {
     getSong: prefix + "/song",
 
     //为你推荐歌单
-    getRecommend: prefix + "/recommend/playlist/u",
+    getRecommend: prefix + "/recommend/playlist",
 
     //歌手详细信息
     // 请求参数: ?singermid= ****
-    getRecommend: prefix + "/singer/desc",
+    getSinger: prefix + "/singer/desc",
 
     //获取排行歌单
     // 请求参数: ?showDetail=1

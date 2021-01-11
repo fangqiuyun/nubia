@@ -35,9 +35,8 @@ export default [
     },
     //4.列表
     {
-        path: '/list',
+        path: '/list/:id',
         component: PlayList
     },
-    //5.搜索
-
+    //5.播放页
 ]
