@@ -8,6 +8,7 @@ export default {
     // 获取歌曲播放接口
     // 请求参数: ?id=songmid 
     getPlaySong: prefix + "/song/urls",
+    getHot: prefix + "/search/hot",
 
     // 获取歌曲搜索接口
     // 请求参数: ?key= 输入框的数据
@@ -25,15 +26,16 @@ export default {
     getSong: prefix + "/song",
 
     //为你推荐歌单
-    getRecommend: prefix + "/recommend/playlist/u",
+    getRecommend: prefix + "/recommend/playlist",
 
     //歌手详细信息
     // 请求参数: ?singermid= ****
-    getRecommend: prefix + "/singer/desc",
+    getSinger: prefix + "/singer/desc",
 
     //获取排行歌单
     // 请求参数: ?showDetail=1
     getRank: prefix + "/top/category",
+    getRankInfo: prefix + "/top",
 
 
 
