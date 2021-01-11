@@ -35,6 +35,7 @@ export default {
     //获取排行歌单
     // 请求参数: ?showDetail=1
     getRank: prefix + "/top/category",
+    getRankInfo: prefix + "/top",
 
 
 
