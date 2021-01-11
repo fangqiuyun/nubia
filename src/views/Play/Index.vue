@@ -9,25 +9,50 @@
         <!-- 标题 -->
         <div class="title">
             <p>
-                四级予你
+                {{info.name}}
                 <span class="iconfont" id="icon"
                 @click="list"
                 >
                     &#xe62e;
                 </span>
             </p>
-            <span class="name">范彬彬</span>
+            <span class="name">{{info.singer[0].name}}</span>
             <div class="image">
-                <img src="./img/img.jpg" alt="">
+                <img :src="`https://y.gtimg.cn/music/photo_new/T002R300x300M000${info.album.mid}.jpg`" alt="">
             </div>
         </div>
 
         <div class="play">
             <div>
-                <span class="iconfont">&#xe604;</span>
+                <span 
+                class="iconfont" 
+                id="zanting"
+                @click="zanting"
+                v-show = "flag == false"
+                >&#xe604;</span>
+
+                <span 
+                class="iconfont" 
+                id="zanting"
+                @click="zanting"
+                v-show = "flag == true"
+                >&#xe68c;</span>
             </div>
             <div>
-                <span class="iconfont">&#xe51a;</span>
+                <span 
+                class="iconfont" 
+                id="shoucang"
+                @click="shoucang"
+                v-show = "flag1 == false"
+                >&#xe51a;</span>
+
+                <span 
+                style="color: red"
+                class="iconfont" 
+                id="shoucang"
+                @click="shoucang"
+                v-show = "flag1 == true"
+                >&#xe502;</span>
             </div>
         </div>
 
@@ -119,6 +144,15 @@
             close-on-click-action
         />
 
+        <!-- 播放 -->
+        <div style="display:none">
+            <audio 
+            class="audio"
+            controls 
+            autoplay 
+            :src="playUrl">
+            </audio>
+        </div>
     </div>
 </template>
 
@@ -138,12 +172,16 @@
 export default {
     data() {
         return {
+            flag: true,
+            flag1: false,
             show: false,
             actions: [
                 { name: '无人知鸟' },
                 { name: '踏山河' },
                 { name: '会不会' },
             ],
+            playUrl: '',
+            info: {}
             
         };
     },
@@ -153,15 +191,34 @@ export default {
             this.show = true
         },
         // 播放收藏
-        play() {
+        zanting() {
+            this.flag = !this.flag
+            var audioPlayer = document.querySelector('.audio');  
+            
+            if (this.flag == true) {
+                audioPlayer.play()
+            } else {
+                audioPlayer.pause()
+                
+            }
+        },
+        shoucang() {
+            this.flag1 = !this.flag1
             
         }
     },
     created() {
-        this.$http.get(uri.getPlaySong + '?id=0039MnYb0qxYhV').then((ret) => {
-            console.log(ret.data)
+        this.$http.get(uri.getPlaySong + '?id=' + this.$route.params.id).then((ret) => {
+            
+            console.log(ret)
+            this.playUrl =  ret.data[this.$route.params.id]
         })
-    }
+        this.$http.get(uri.getSong + '?songmid=0039MnYb0qxYhV').then((ret) => {
+            this.info = ret.data.track_info
+            console.log(this.info)
+            console.log(ret)
+        })
+        }
 }
 </script>
 
@@ -203,7 +260,7 @@ export default {
         border-radius: 50%;
         position: relative;
         padding: 4px;
-        top: -1.5px;
+        top: -4px;
         margin-left: 2px;
     }
     .name {
@@ -314,7 +371,6 @@ export default {
     }
     // 下载
     .download {
-        margin-top: 20px;
         display: flex;
         justify-content: center;
     }
@@ -332,6 +388,31 @@ export default {
     .play {
         width: 100%;
         height: 80px;
-        padding: 0 20%;
+        // padding: 0 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .play > div {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #888888;
+        border-radius: 50%;
+        line-height: 40px;
+        text-align: center;
+        margin-right: 5%;
+    }
+    .play > div + div {
+        margin-left: 5%;
+    }
+    #zanting {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000;
+    }
+    #shoucang {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000;
     }
 </style>
