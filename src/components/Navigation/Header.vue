@@ -53,6 +53,7 @@ export default {
 // 之前用过class样式绑定，是否显示头取决于是否有class样式
 .header {
     position: fixed;
+    top: 0;
     z-index: 999;
     width: 100%;
 }

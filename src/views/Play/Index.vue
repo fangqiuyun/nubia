@@ -1,6 +1,7 @@
 <template>
     <div>
         
+            <button class="btn" @click="goBack">返回</button>
         <!-- 头 -->
         <div class="head">
             <img src="./img/header.png" alt="">
@@ -156,6 +157,9 @@ export default {
         };
     },
     methods: {
+        goBack(){
+            this.$router.push('/')
+        },
         // 点击菜单弹出列表
         list() {
             this.show = true
@@ -430,5 +434,11 @@ export default {
         display: flex;
         justify-content: space-between;
         width: 75%;
+    }
+        .btn{
+        position: absolute;
+        z-index: 55;
+        top: 15px;
+        left: 15px;
     }
 </style>

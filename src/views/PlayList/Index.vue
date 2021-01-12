@@ -6,6 +6,7 @@
             finished-text="没有更多歌曲"
             @load="onLoad"
         >
+            <button class="btn" @click="goBack">返回</button>
             <div class="imgs">
                 <img :src="data.logo" alt="" width="100%">
             </div>
@@ -42,7 +43,7 @@ export default {
   
   methods: {
     getPlay(songmid){
-        console.log(songmid)
+        // console.log(songmid)
         this.$router.push('/playsong/' + songmid)
     },
     getInfo(){
@@ -54,7 +55,7 @@ export default {
                 this.list = ret.data.songlist
 
                 this.finished = true;
-                console.log(this.list)
+                // console.log(this.list)
             }else{
                 Toast.fail("网络繁忙");
             }
@@ -65,6 +66,9 @@ export default {
       // 异步更新数据
         this.getInfo()
     },
+    goBack(){
+        this.$router.push('/')
+    }
   },
 };
 </script>
@@ -81,5 +85,11 @@ export default {
         img{
             transform: translateY(0%);
         }
+    }
+    .btn{
+        position: absolute;
+        z-index: 55;
+        top: 15px;
+        left: 15px;
     }
 </style>

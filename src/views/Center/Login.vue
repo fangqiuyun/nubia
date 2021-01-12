@@ -53,6 +53,7 @@ export default {
             this.$http
                 .post("http://127.0.0.1:2004/backend/login", values)
                 .then((ret) => {
+                    console.log(ret)
                     if (ret.error_code == 0) {
                         Toast.success("登录成功！");
                         // 跳转
@@ -60,7 +61,7 @@ export default {
                         if (this.$route.query.callback) {
                             this.$router.push(this.$route.query.callback);
                         } else {
-                            this.$router.push("/center");
+                            this.$router.push("/");
                         }
                     } else {
                         Toast.fail("登录失败！");
@@ -70,12 +71,12 @@ export default {
     },
     created() {
         // 进入时，隐藏底部导航
-        this.$store.commit("global/setFooter", false);
+        // this.$store.commit("global/setFooter", false);
     },
 
     beforeDestroy() {
         // 离开时，显示底部导航
-        this.$store.commit("global/setFooter", true);
+        // this.$store.commit("global/setFooter", true);
     },
 };
 </script>

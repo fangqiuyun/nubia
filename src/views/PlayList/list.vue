@@ -1,5 +1,7 @@
 <template>
     <div>
+            <button class="btn" @click="goBack">返回</button>
+
         <!-- v-show控制组件是否显示 -->
     <div class="loading" v-show="isLoading">
         <van-loading size="24px" type="spinner">加载中...</van-loading>
@@ -52,6 +54,9 @@ export default {
         }
     },
     methods: {
+        goBack(){
+            this.$router.push('/')
+        },
         getDetail() {
            // console.log(this.$route)
             this.$http.get(uri.getRankInfo + "?id="  + this.$route.params.topId)
@@ -148,4 +153,10 @@ header a img {
     margin: 0 auto;
     padding-top: .7rem;
 }
+    .btn{
+        position: absolute;
+        z-index: 55;
+        top: 15px;
+        left: 15px;
+    }
 </style>
